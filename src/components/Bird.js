@@ -16,6 +16,7 @@ class Bird extends Component {
               <p>Family : {bird.family}</p>
               <p>Length : {bird.length}</p>
               <p>Weight : {bird.weight}</p>
+              <div dangerouslySetInnerHTML={{__html: bird.detail}}></div>
             </div>
           );
     }
