@@ -30,7 +30,7 @@ class App extends Component {
 
               <Route exact path="/" component={Home} />
               <Route path="/groups" component={Groups} />
-              <Route path="/species" component={Bird} />
+              <Route path="/species/:name" component={Bird} />
             </div>
             </div>
           </Router>
