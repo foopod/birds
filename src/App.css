@@ -5,6 +5,7 @@ h1, h2{
 
 .App {
   min-height: 100vh;
+  padding: 1em;
 }
 
 .birdContainer{
@@ -13,6 +14,12 @@ h1, h2{
 
 .birdContainer img{
   width: 100%;
+}
+
+.imageinlist{
+  width: 100%;
+  padding-top:1em; 
+  display: block;
 }
 
 .scientific{

@@ -7,6 +7,9 @@ class Groups extends Component {
             <FamilyList />
         );
     }
+    componentDidMount(prevProps) {
+        window.scrollTo(0, 0)
+    }
 }
 
 class FamilyRow extends React.Component {

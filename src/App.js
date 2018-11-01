@@ -4,6 +4,7 @@ import Groups from './components/Groups.js';
 import Home from './components/Home.js';
 import Bird from './components/Bird.js';
 import Family from './components/Family.js';
+import FamilyOfBirds from './components/FamilyOfBirds.js';
 import './App.css';
 
 class App extends Component {
@@ -26,7 +27,8 @@ class App extends Component {
 
               <Route exact path="/" component={Home} />
               <Route path="/groups" component={Groups} />
-              <Route path="/family" component={Family} />
+              <Route exact path="/family" component={Family} />
+              <Route path="/family/:family" component={FamilyOfBirds} />
               <Route path="/species/:name" component={Bird} />
             </div>
             </div>

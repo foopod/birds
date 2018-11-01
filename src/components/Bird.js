@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import birds from './../birds.json';
 
 class Bird extends Component {
@@ -20,8 +21,13 @@ class Bird extends Component {
                     <span className='value'>{bird.order}</span>
                 </div>
                 <div>
+                    
                     <span className='attribute'>Family : </span>
-                    <span className='value'>{bird.family}</span>
+                    <span className='value'>
+                        <Link to={`/family/${bird.family}`}>
+                            {bird.family}
+                        </Link>
+                    </span>
                 </div>
                 <div>
                     <span className='attribute'>NZ Status : </span>
