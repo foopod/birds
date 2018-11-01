@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Groups from './components/Groups.js';
 import Home from './components/Home.js';
 import Bird from './components/Bird.js';
+import Family from './components/Family.js';
 import './App.css';
 
 class App extends Component {
@@ -21,15 +22,11 @@ class App extends Component {
                 <li>
                   <Link to="/groups">Groups</Link>
                 </li>
-                <li>
-                  <Link to="/species/asdasd">Groups</Link>
-                </li>
               </ul>
-
-              <hr />
 
               <Route exact path="/" component={Home} />
               <Route path="/groups" component={Groups} />
+              <Route path="/family" component={Family} />
               <Route path="/species/:name" component={Bird} />
             </div>
             </div>

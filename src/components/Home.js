@@ -17,7 +17,7 @@ class BirdRow extends React.Component {
       const url = this.props.url;
       return (
         <Link to={`/species/${url}`}>
-            <div>
+            <div className='birdListItem'>
                 <h4>{name}</h4>
                 <p>{scientific}</p>
             </div>

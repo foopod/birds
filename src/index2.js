@@ -4,14 +4,15 @@ const async = require('async');
 const fs = require("fs");
 
 var proxyUrl = "http://" + "joshiel" + ":" + "squidVision12" + "@" + "172.30.31.50" + ":" + "3128";
-var proxiedRequest = request.defaults({'proxy': proxyUrl});
+// var proxiedRequest = request.defaults({'proxy': proxyUrl});
+var proxiedRequest = request.defaults();
 
 var birds = [];
 var urls = [];
 
 var pages = [];
 
-for (var i = 0; i < 5; i++) {
+for (var i = 0; i < 50; i++) {
     pages.push('http://nzbirdsonline.org.nz/name-search?title=&field_other_names_value=&field_search_scientific_name_value=&page='+i)
 }
 
@@ -80,7 +81,7 @@ async.each(pages, function(page, callback) {
 
 function saveToFile(data){
     var json = JSON.stringify(data);
-    fs.writeFile('birds2.json', json,function(err){
+    fs.writeFile('birds.json', json,function(err){
         if(err) throw err;
       });
 }

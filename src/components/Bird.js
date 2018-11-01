@@ -8,17 +8,44 @@ class Bird extends Component {
             return obj.url === this.props.match.params.name;
           })[0]
         return (
-            <div>
-              <h1>{bird.name}</h1>
+            <div className='birdContainer'>
+              <h2>{bird.name}</h2>
               <img src={bird.imagelink}/>
-              <p>{bird.scientific}</p>
-              <p>Order : {bird.order}</p>
-              <p>Family : {bird.family}</p>
-              <p>Length : {bird.length}</p>
-              <p>Weight : {bird.weight}</p>
-              <div dangerouslySetInnerHTML={{__html: bird.detail}}></div>
+              <div className='data'>
+                <div>
+                    <span className='scientific'>{bird.scientific}</span>
+                </div>
+                <div>
+                    <span className='attribute'>Order : </span>
+                    <span className='value'>{bird.order}</span>
+                </div>
+                <div>
+                    <span className='attribute'>Family : </span>
+                    <span className='value'>{bird.family}</span>
+                </div>
+                <div>
+                    <span className='attribute'>NZ Status : </span>
+                    <span className='value'>{bird.nzstatus}</span>
+                </div>
+                <div>
+                    <span className='attribute'>Conservation Status : </span>
+                    <span className='value'>{bird.conservationstatus}</span>
+                </div>
+                <div>
+                    <span className='attribute'>Length : </span>
+                    <span className='value'>{bird.length}</span>
+                </div>
+                <div>
+                    <span className='attribute'>Weight : </span>
+                    <span className='value'>{bird.weight}</span>
+                </div>
+              </div>
+              <div className='detailedInfo' dangerouslySetInnerHTML={{__html: bird.detail}}></div>
             </div>
           );
     }
+    componentDidMount(prevProps) {
+        window.scrollTo(0, 0)
+      }
 }
 export default Bird;

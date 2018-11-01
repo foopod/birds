@@ -1,4 +1,40 @@
-.App {
+h1, h2{
   text-align: center;
+  margin: 5px 0px 5px 0px;
+}
+
+.App {
   min-height: 100vh;
+}
+
+.birdContainer{
+  padding: 1em;
+}
+
+.birdContainer img{
+  width: 100%;
+}
+
+.scientific{
+  font-style: italic;
+}
+
+.attribute{
+  font-weight: bold;
+}
+
+.value{
+  padding-left: 1em;
+}
+
+.birdListItem{
+  padding-bottom: 1em;
+}
+
+.birdListItem h4, .birdListItem p{
+  margin: 0 0 0 0;
+}
+
+ul{
+  margin: 0 0 0 0;
 }
