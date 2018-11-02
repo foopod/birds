@@ -5,7 +5,8 @@ function getBirds(callback) {
     if(localStorage.getItem('birdDB')){
         callback(JSON.parse(localStorage.getItem('birdDB')));
     } else {
-        request(window.location.host+'/birds.json', function (error, response, body){
+        const url = window.location.protocol +"//"+ window.location.host;
+        request(url+'/birds.json', function (error, response, body){
             localStorage.setItem('birdDB',body);
             callback(JSON.parse(body));
         })
