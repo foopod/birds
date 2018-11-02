@@ -36,10 +36,26 @@ h1, h2{
 
 .birdListItem{
   padding-bottom: 1em;
+  display: grid;
+  grid-template-columns: 30% auto;
 }
 
 .birdListItem h4, .birdListItem p{
+  font-size: 0.8em;
+  padding: 5px;
   margin: 0 0 0 0;
+}
+
+.birdListItem img{
+  width: 100%;
+}
+
+.search{
+  padding:4px 0 4px 0;
+  width: 100%;
+  border-radius: 5px;
+  margin: 10px 0 10px 0;
+  font-size: 1.2em;
 }
 
 ul{
