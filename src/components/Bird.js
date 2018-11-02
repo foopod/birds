@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import birds from './../birds.json';
+import Utility from './../modules/Utility.js';
 
 class Bird extends Component {
     render() {
-        const bird = birds.filter(obj => {
-            console.log(this.props.match.params.name);
-            return obj.url === this.props.match.params.name;
-          })[0]
+        var bird = {};
+        console.log(this.state);
+        if(this.state && this.state.data){
+            bird = this.state.data.filter(obj => {
+                return obj.url === this.props.match.params.name;
+              })[0]
+        }
         return (
             <div className='birdContainer'>
+            {this.state && this.state.data &&
+            <div>
               <h2>{bird.name}</h2>
               <img src={bird.imagelink}/>
               <div className='data'>
@@ -47,11 +52,17 @@ class Bird extends Component {
                 </div>
               </div>
               <div className='detailedInfo' dangerouslySetInnerHTML={{__html: bird.detail}}></div>
+              </div>
+            }
             </div>
           );
     }
     componentDidMount(prevProps) {
+        const self = this;
+        Utility.getBirds(function (birds) {
+            self.setState({ data: birds});
+        })
         window.scrollTo(0, 0)
-      }
+    }
 }
 export default Bird;

@@ -1,13 +1,28 @@
 import React, { Component } from 'react';
-import birds from './../birds.json';
+import { Link } from "react-router-dom";
+import Utility from './../modules/Utility.js';
 
 class Groups extends Component {
     render() {
-        return (
-            <FamilyList />
-        );
+        var rows = [];
+        if(this.state && this.state.data){
+            const families = new Set();
+            this.state.data.forEach((bird) => {
+                families.add(bird.family);
+            });
+            families.forEach((family) => {
+                rows.push(
+                    <FamilyRow family={family}/>
+                );
+            });
+        }
+        return rows
     }
     componentDidMount(prevProps) {
+        const self = this;
+        Utility.getBirds(function (birds) {
+            self.setState({ data: birds});
+        })
         window.scrollTo(0, 0)
     }
 }
@@ -17,26 +32,12 @@ class FamilyRow extends React.Component {
       const family = this.props.family;
       return (
         <div>
-            <p>{family}</p>
+            <Link to={`/family/${family}`}>
+                <p>{family}</p>
+            </Link>
         </div>
       );
     }
   }
-  
-class FamilyList extends React.Component {
-    render() {
-        const families = new Set();
-        birds.forEach((bird) => {
-            families.add(bird.family);
-        });
-        const rows = [];
-        families.forEach((family) => {
-            rows.push(
-                <FamilyRow family={family}/>
-            );
-        });
-        return rows
-    }
-}
 
 export default Groups;

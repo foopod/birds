@@ -1,26 +1,30 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import birds from './../birds.json';
+import Utility from './../modules/Utility.js';
 
 class FamilyOfBirds extends Component {
     render() {
-        console.log(this.props.match.params.family)
-        var birdList = birds.filter(obj => {
-            return obj.family === this.props.match.params.family;
-        })
-        console.log(birdList)
         const rows = [];
-        birdList.forEach((bird) => {
-            rows.push(
-                <BirdRow
-                name={bird.name}
-                imagelink={bird.imagelink}
-                url={bird.url}/>
-            );
-        });
+        if(this.state && this.state.data){
+            var birdList = this.state.data.filter(obj => {
+                return obj.family === this.props.match.params.family;
+            })
+            birdList.forEach((bird) => {
+                rows.push(
+                    <BirdRow
+                    name={bird.name}
+                    imagelink={bird.imagelink}
+                    url={bird.url}/>
+                );
+            });
+        }
         return rows;
     }
     componentDidMount(prevProps) {
+        const self = this;
+        Utility.getBirds(function (birds) {
+            self.setState({ data: birds});
+        })
         window.scrollTo(0, 0)
     }
 }
